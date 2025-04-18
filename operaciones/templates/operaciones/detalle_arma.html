@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle del arma {{ arma.codigo_arma }}</title>
+</head>
+<body>
+    <h1>Detalle del arma: {{ arma.codigo_arma }}</h1>
+
+    <ul>
+        <li><strong>Serial:</strong> {{ arma.serial }}</li>
+        <li><strong>Tipo:</strong> {{ arma.get_tipo_display }}</li>
+        <li><strong>Estado:</strong> {{ arma.get_estado_display }}</li>
+        <li><strong>Asignada a:</strong> {{ arma.asignada_a }}</li>
+        <li><strong>Transferida:</strong> {{ arma.transferida }}</li>
+        <li><strong>Fija en puesto:</strong> {{ arma.fija_en_puesto }}</li>
+        <li><strong>Almacén actual:</strong> {{ arma.almacen_actual }}</li>
+        <li><strong>Observaciones:</strong> {{ arma.observaciones }}</li>
+    </ul>
+
+    {% if arma.licencia_archivo %}
+        <h3>Licencia del arma:</h3>
+        <img src="{{ arma.licencia_archivo.url }}" alt="Licencia del arma" style="max-width: 400px;">
+    {% else %}
+        <p><em>No se ha subido la licencia.</em></p>
+    {% endif %}
+</body>
+</html>
