@@ -1,33 +1,27 @@
-<!-- templates/portal/login.html -->
-{% load widget_tweaks %}
+{% extends "base.html" %}
+{% block title %}Iniciar sesión{% endblock %}
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Iniciar Sesión - SEGASA</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100 h-screen flex items-center justify-center">
-    <div class="bg-white p-8 rounded-xl shadow-xl w-full max-w-sm">
-        <h2 class="text-2xl font-bold text-center mb-6 text-gray-700">Iniciar sesión</h2>
-        <form method="post">
-            {% csrf_token %}
-            <div class="mb-4">
-                <label class="block text-gray-600 mb-1">Usuario</label>
-                {{ form.username|add_class:"w-full px-4 py-2 border border-gray-300 rounded-lg" }}
-            </div>
-            <div class="mb-6">
-                <label class="block text-gray-600 mb-1">Contraseña</label>
-                {{ form.password|add_class:"w-full px-4 py-2 border border-gray-300 rounded-lg" }}
-            </div>
-            <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
-                Entrar
-            </button>
-        </form>
-        {% if form.errors %}
-            <p class="mt-4 text-red-600 text-sm text-center">Usuario o contraseña incorrectos</p>
-        {% endif %}
+{% block content %}
+<div class="flex justify-center items-center h-screen bg-gray-100">
+  <form method="post" class="bg-white p-6 rounded-xl shadow-md w-96">
+    {% csrf_token %}
+    <h2 class="text-2xl font-bold text-center mb-6 text-gray-700">Iniciar sesión</h2>
+
+    <div class="mb-4">
+      <label for="username" class="block text-sm text-gray-600">Usuario</label>
+      <input type="text" name="username" required class="w-full border rounded px-3 py-2 mt-1" placeholder="Usuario">
     </div>
-</body>
-</html>
+
+    <div class="mb-4">
+      <label for="password" class="block text-sm text-gray-600">Contraseña</label>
+      <input type="password" name="password" required class="w-full border rounded px-3 py-2 mt-1" placeholder="Contraseña">
+    </div>
+
+    {% if form.errors %}
+      <p class="text-red-500 text-sm mb-4">Usuario o contraseña incorrectos</p>
+    {% endif %}
+
+    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">Entrar</button>
+  </form>
+</div>
+{% endblock %}
