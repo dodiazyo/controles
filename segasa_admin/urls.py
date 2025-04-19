@@ -15,3 +15,21 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
+
+
+
+
+from django.contrib import admin
+from django.urls import path
+from operaciones.views import portal_home, detalle_arma  # importa la vista aquí
+
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("portal/", portal_home, name="portal_home"),  # 👈 esta línea es clave
+    path("arma/<int:arma_id>/", detalle_arma, name="detalle_arma"),
+    path("login/", ...),
+    path("logout/", ...),
+]

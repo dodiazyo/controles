@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}SEGASA{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Barra superior -->
+    <header class="bg-blue-800 text-white p-4 shadow flex justify-between items-center">
+        <h1 class="text-xl font-bold">Sistema Administrativo SEGASA</h1>
+        <nav class="space-x-4">
+            <a href="/portal/" class="hover:underline">🏠 Inicio</a>
+            <form method="post" action="{% url 'logout' %}" style="display: inline;">
+    {% csrf_token %}
+    <button type="submit" class="hover:underline text-red-300 bg-transparent border-none cursor-pointer">
+        🔒 Cerrar sesión
+    </button>
+</form>
+
+        </nav>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="p-6">
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>

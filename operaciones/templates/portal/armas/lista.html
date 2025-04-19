@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Gestión de Armas - SEGASA{% endblock %}
+
+{% block content %}
+<div class="p-6">
+    <h2 class="text-2xl font-bold mb-4 text-gray-700">Listado de Armas</h2>
+    <table class="min-w-full bg-white shadow rounded-lg overflow-hidden">
+        <thead class="bg-blue-800 text-white">
+            <tr>
+                <th class="py-2 px-4">Código</th>
+                <th class="py-2 px-4">Serial</th>
+                <th class="py-2 px-4">Tipo</th>
+                <th class="py-2 px-4">Estado</th>
+                <th class="py-2 px-4">Licencia</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for arma in armas %}
+            <tr class="border-b">
+                <td class="py-2 px-4">{{ arma.codigo_arma }}</td>
+                <td class="py-2 px-4">{{ arma.serial }}</td>
+                <td class="py-2 px-4">{{ arma.tipo }}</td>
+                <td class="py-2 px-4">{{ arma.estado }}</td>
+                <td class="py-2 px-4">
+                    {% if arma.licencia_digital %}
+                        <a href="{{ arma.licencia_digital.url }}" target="_blank" class="text-blue-600 underline">Ver</a>
+                    {% else %}
+                        ❌
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="mb-4">
+    <a href="{% url 'agregar_arma' %}" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+        ➕ Agregar Arma
+    </a>
+</div>
+
+{% endblock %}

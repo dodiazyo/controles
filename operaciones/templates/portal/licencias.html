@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Licencias Vencidas{% endblock %}
+
+{% block content %}
+<div class="p-6">
+    <h1 class="text-2xl font-bold text-gray-700 mb-4">🔍 Licencias Vencidas y por Vencer</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+            <h2 class="text-lg font-semibold text-red-600">🔫 Armas vencidas</h2>
+            <ul class="list-disc pl-6 text-gray-700">
+                {% for arma in armas_vencidas %}
+                    <li>{{ arma.serial }} - vencida el {{ arma.fecha_vencimiento_licencia }}</li>
+                {% empty %}
+                    <li>No hay armas con licencias vencidas.</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div>
+            <h2 class="text-lg font-semibold text-orange-500">🔫 Armas por vencer</h2>
+            <ul class="list-disc pl-6 text-gray-700">
+                {% for arma in armas_por_vencer %}
+                    <li>{{ arma.serial }} - vence el {{ arma.fecha_vencimiento_licencia }}</li>
+                {% empty %}
+                    <li>No hay armas por vencer.</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div>
+            <h2 class="text-lg font-semibold text-red-600">📄 Documentos de vehículos vencidos</h2>
+            <ul class="list-disc pl-6 text-gray-700">
+                {% for doc in docs_vencidos %}
+                    <li>{{ doc.vehiculo.placa }} - {{ doc.tipo }} vencido el {{ doc.fecha_vencimiento }}</li>
+                {% empty %}
+                    <li>No hay documentos vencidos.</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div>
+            <h2 class="text-lg font-semibold text-orange-500">📄 Documentos de vehículos por vencer</h2>
+            <ul class="list-disc pl-6 text-gray-700">
+                {% for doc in docs_por_vencer %}
+                    <li>{{ doc.vehiculo.placa }} - {{ doc.tipo }} vence el {{ doc.fecha_vencimiento }}</li>
+                {% empty %}
+                    <li>No hay documentos por vencer.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

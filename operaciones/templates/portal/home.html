@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}Panel Principal - SEGASA{% endblock %}
+
+{% block content %}
+<div class="p-6">
+    <h1 class="text-3xl font-bold text-gray-700 mb-6">Bienvenido al portal principal de SEGASA</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Tarjeta: Armas -->
+        <a href="{% url 'admin:operaciones_arma_changelist' %}" class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition">
+            <div class="flex items-center space-x-4">
+                <span class="text-blue-600 text-3xl">🔫</span>
+                <div>
+                    <h2 class="text-lg font-semibold text-gray-800">Gestión de Armas</h2>
+                    <p class="text-sm text-gray-500">Control, licencias y movimientos</p>
+                </div>
+            </div>
+        </a>
+
+        <!-- Tarjeta: Vehículos -->
+        <a href="{% url 'admin:operaciones_vehiculo_changelist' %}" class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition">
+            <div class="flex items-center space-x-4">
+                <span class="text-green-600 text-3xl">🚗</span>
+                <div>
+                    <h2 class="text-lg font-semibold text-gray-800">Gestión de Vehículos</h2>
+                    <p class="text-sm text-gray-500">Mantenimientos y asignaciones</p>
+                </div>
+            </div>
+        </a>
+
+        <!-- Tarjeta: Inventario -->
+        <a href="{% url 'admin:operaciones_articuloinventario_changelist' %}" class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition">
+            <div class="flex items-center space-x-4">
+                <span class="text-yellow-500 text-3xl">📦</span>
+                <div>
+                    <h2 class="text-lg font-semibold text-gray-800">Inventario</h2>
+                    <p class="text-sm text-gray-500">Artículos, uniformes y equipos</p>
+                </div>
+            </div>
+        </a>
+
+        <!-- Tarjeta: Oficiales -->
+        <a href="{% url 'admin:operaciones_oficial_changelist' %}" class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition">
+            <div class="flex items-center space-x-4">
+                <span class="text-indigo-500 text-3xl">🧍‍♂️</span>
+                <div>
+                    <h2 class="text-lg font-semibold text-gray-800">Oficiales</h2>
+                    <p class="text-sm text-gray-500">Asignaciones y estados</p>
+                </div>
+            </div>
+        </a>
+<!-- Tarjeta: Licencias -->
+<a href="{% url 'licencias' %}" class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition">
+    <div class="flex items-center space-x-4">
+        <span class="text-orange-500 text-3xl">📅</span>
+        <div>
+            <h2 class="text-lg font-semibold text-gray-800">Licencias Vencidas</h2>
+            <p class="text-sm text-gray-500">Armas y vehículos con documentos por vencer</p>
+        </div>
+    </div>
+</a>
+<a href="{% url 'registrar_arma' %}" class="text-sm text-blue-600 hover:underline mt-2 inline-block">+ Registrar nueva arma</a>
+
+        <!-- Tarjeta: Combustible -->
+        <a href="{% url 'admin:operaciones_cargacombustible_changelist' %}" class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition">
+            <div class="flex items-center space-x-4">
+                <span class="text-red-500 text-3xl">⛽</span>
+                <div>
+                    <h2 class="text-lg font-semibold text-gray-800">Cargas de Combustible</h2>
+                    <p class="text-sm text-gray-500">Control de consumo y kilometraje</p>
+                </div>
+            </div>
+        </a>
+
+        <!-- Tarjeta: Documentos -->
+        <a href="{% url 'admin:operaciones_documentovehiculo_changelist' %}" class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition">
+            <div class="flex items-center space-x-4">
+                <span class="text-purple-500 text-3xl">📄</span>
+                <div>
+                    <h2 class="text-lg font-semibold text-gray-800">Documentos</h2>
+                    <p class="text-sm text-gray-500">Licencias, seguros y más</p>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}
